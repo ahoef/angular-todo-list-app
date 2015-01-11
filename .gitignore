@@ -1,0 +1,10 @@
+
+# folders #
+######################
+.sass-cache/
+node_modules/
+dest/
+
+# files #
+######################
+.DS_Store
