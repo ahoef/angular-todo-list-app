@@ -19,13 +19,13 @@
         </span>
       </div>
 
-    <p ng-repeat="todo in mainCtrl.todos">
+    <p ng-repeat="todo in mainCtrl.todos track by $index">
       <input type="text" ng-model="todo">
+      <button class="btn" ng-click="mainCtrl.completeTodo(todo)" >&#10003;</button>
+      <button ng-click="mainCtrl.removeTodo(todo)">X</button>
+  </span>
     </p>
   </form>
-  <!-- update -->
-
-
 
   </body>
 
