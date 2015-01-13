@@ -8,4 +8,7 @@ body {
 		font-size: 1em;
 		color: $bodyColor;
 	}
+	.completed {
+		text-decoration: line-through;
+	}
 }

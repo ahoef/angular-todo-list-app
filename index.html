@@ -6,24 +6,47 @@
     <script type="text/javascript" src="dest/js/app.min.js"></script>
   </head>
 
-  <body ng-controller="mainController as mainCtrl">
+<!-- controller as syntax -->
+<!--   <body ng-controller="mainController as mainCtrl">
   	<h1>{{ 'Hello World!' }}</h1>
   	<img src="images/wild-horses.jpg">
   	<p>An image of horses.</p>
 
   <form role="form" ng-submit="mainCtrl.addTodo(todo)">
       <div>
-        <input type="text" ng-model="todo" placeholder="Add something here">
+        <input type="text" ng-model="todo" placeholder="Add something here"/>
         <span>
-          <input type="submit" value="Add">
+          <input type="submit" value="Add"/>
         </span>
       </div>
 
     <p ng-repeat="todo in mainCtrl.todos track by $index">
-      <input type="text" ng-model="todo">
-      <button class="btn" ng-click="mainCtrl.completeTodo(todo)" >&#10003;</button>
+      <input type="text" ng-model="todo"/>
+      <button ng-click="mainCtrl.completeTodo(todo)" >&#10003;</button>
       <button ng-click="mainCtrl.removeTodo(todo)">X</button>
-  </span>
+    </p>
+  </form>
+
+  </body> -->
+
+
+  <!-- $scope controller syntax -->
+  <body ng-controller="mainController">
+    <h1>{{ 'Hello World!' }}</h1>
+    <!-- <p>An image of horses.</p> -->
+
+  <form role="form" ng-submit="addTodo(todo)">
+      <div>
+        <input type="text" ng-model="todo" placeholder="Add something here" />
+        <span>
+          <input type="submit" value="Add"/>
+        </span>
+      </div>
+
+    <p ng-repeat="todo in todos track by $index">
+      <input type="text" ng-model="todo" ng-class="{completed: $scope.todos.completed}"/>
+      <button ng-click="completeTodo(todo)" >&#10003;</button>
+      <button ng-click="removeTodo($index)">X</button>
     </p>
   </form>
 
