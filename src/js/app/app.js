@@ -22,7 +22,7 @@
 // 		// console.log(completed);
 // 		// var completed = true;
 // 		// console.log(completed);
-// 		console.log('farts');
+// 		console.log('test');
 // 	}
 
 // 	mainController.prototype.removeTodo = function(todo) {
@@ -37,7 +37,7 @@
 	'use strict';
 	// var completed = false;
 
-	angular.module('todoApp', [])
+	angular.module('todoApp', ['ui.sortable'])
 	.controller('mainController', ['$scope', mainController]);
 
 	function mainController($scope) {
@@ -54,6 +54,7 @@
 	}, true);
 
 	 $scope.addTodo = function(todo) {
+	 	console.log('inside addTodo');
 	    $scope.todos.push(todo);
 	    $scope.todo = '';
 	};
@@ -63,11 +64,14 @@
       console.log($scope.todos);
     };
 
-    $scope.completeTodo = function (index) {
-    	// console.log($scope.todo);
-    	$scope.todos.completed = true;
-    	console.log($scope.todos.completed);
+    $scope.completeTodo = function (todo) {
+    	console.log($scope.todos);
     	return;
+    	// var $scope.todos.completed = false;
+    	// console.log($scope.todos.completed);
+    	// return;
+    	// console.log('yo!');
+    	// console.log(index);
     }
 
 }

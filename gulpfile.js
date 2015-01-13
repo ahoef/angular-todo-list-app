@@ -19,10 +19,20 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function() {
-  	gulp.src('src/js/app/*.js')
+  gulp.src('src/js/app/*.js')
   	.pipe(uglify())
   	.pipe(concat("app.min.js"))
   	.pipe(gulp.dest('dest/js'));
+
+  gulp.src('src/js/angular/*.js')
+    .pipe(uglify())
+    .pipe(concat("angular.min.js"))
+    .pipe(gulp.dest('dest/js'));
+
+  gulp.src('src/js/jquery/*.js')
+    .pipe(uglify())
+    .pipe(concat("jquery.min.js"))
+    .pipe(gulp.dest('dest/js'));
 
 	gulp.src('src/js/vendors/*.js')
   	.pipe(uglify())

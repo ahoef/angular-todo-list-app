@@ -8,6 +8,10 @@ body {
 		font-size: 1em;
 		color: $bodyColor;
 	}
+	.list-item {
+		padding: 5px 0; 
+		cursor: move;
+	}
 	.completed {
 		text-decoration: line-through;
 	}

@@ -2,7 +2,8 @@
 <html ng-app="todoApp">
   <head>
     <link rel="stylesheet" href="dest/css/base.min.css">
-    <script type="text/javascript" src="dest/js/vendors.min.js"></script>
+    <script type="text/javascript" src="dest/js/jquery.min.js"></script>
+    <script type="text/javascript" src="dest/js/angular.min.js"></script>
     <script type="text/javascript" src="dest/js/app.min.js"></script>
   </head>
 
@@ -33,7 +34,6 @@
   <!-- $scope controller syntax -->
   <body ng-controller="mainController">
     <h1>{{ 'Hello World!' }}</h1>
-    <!-- <p>An image of horses.</p> -->
 
   <form role="form" ng-submit="addTodo(todo)">
       <div>
@@ -43,11 +43,13 @@
         </span>
       </div>
 
-    <p ng-repeat="todo in todos track by $index">
+<div ui-sortable ng-model="todos">
+    <p class="list-item" ng-repeat="todo in todos track by $index" >
       <input type="text" ng-model="todo" ng-class="{completed: $scope.todos.completed}"/>
       <button ng-click="completeTodo(todo)" >&#10003;</button>
       <button ng-click="removeTodo($index)">X</button>
     </p>
+</div>
   </form>
 
   </body>
