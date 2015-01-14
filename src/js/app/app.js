@@ -37,16 +37,27 @@
 	'use strict';
 	// var completed = false;
 
-	angular.module('todoApp', ['ui.sortable'])
-	.controller('mainController', ['$scope', mainController]);
+	angular.module('todoApp', ['ui.sortable', 'LocalStorageModule'])
 
-	function mainController($scope) {
-		$scope.todos = ['Item 1', 'Item 2', 'Item 3'];	
+	.controller('mainController', ['$scope', mainController]);
+	// .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+ //    	localStorageServiceProvider.setPrefix('ls');
+ //  		}])
+		
+
+	function mainController($scope, localStorageService) {
+
+	console.log(localStorageService);
+
+	var todosInStore = localStorageService.get('todos');
+
+	$scope.todos = todosInStore || [];
 
 	$scope.$watch('todos', function () {
+		localStorageService.set('todos', $scope.todos);
 
-	    var lastItem = $scope.todos.length -1,
-	  		lastEl = $scope.todos[lastItem];
+	    var lastIndex= $scope.todos.length -1,
+	  		lastEl = $scope.todos[lastIndex];
 
 		if(lastEl === "" || lastEl === undefined || lastEl === null) {
 		  	$scope.todos.pop();
@@ -54,7 +65,7 @@
 	}, true);
 
 	 $scope.addTodo = function(todo) {
-	 	console.log('inside addTodo');
+	 	console.log('addTodo was called');
 	    $scope.todos.push(todo);
 	    $scope.todo = '';
 	};
@@ -64,15 +75,15 @@
       console.log($scope.todos);
     };
 
-    $scope.completeTodo = function (todo) {
-    	console.log($scope.todos);
-    	return;
-    	// var $scope.todos.completed = false;
-    	// console.log($scope.todos.completed);
-    	// return;
-    	// console.log('yo!');
-    	// console.log(index);
-    }
+    // $scope.completeTodo = function (todo) {
+    // 	console.log($scope.todos);
+    // 	return;
+    // 	// var $scope.todos.completed = false;
+    // 	// console.log($scope.todos.completed);
+    // 	// return;
+    // 	// console.log('yo!');
+    // 	// console.log(index);
+    // }
 
 }
 
