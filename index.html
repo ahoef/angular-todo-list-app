@@ -44,6 +44,8 @@
               <input type="submit" value="Add"/>
             </span>
           </div>
+      </form>
+          
 
         <div ui-sortable ng-model="todos">
             <p class="list-item" ng-repeat="todo in todos track by $index" >
@@ -52,7 +54,6 @@
               <button ng-click="removeTodo($index)">X</button>
             </p>
         </div>
-      </form>
     </div>
 
   </body>

@@ -35,14 +35,12 @@
 		    $scope.completeTodo = function (todo) {
 		    	$scope.todos.completed = true;
 		    	console.log($scope.todos.completed);
-		    	return;
 		    }
 
 		});
 
 })(window.angular);
 
-//$scope.addTodo gets called when any button gets clicked; 
-// that's why every item gets a strikethrough
+// model not binding to individual item that gets completed
 
 
