@@ -1,12 +1,48 @@
 body {
 	font-family: Helvetica, sans-serif;
+	background-image: url('/images/clouds.jpg');
+	background-size: cover;
 	h1 {
-		font-size: 2em;
-		color: $headlineColor;
+		font-size: 1.75em;
+		color: white;
+		text-align: center;
+		margin: 50px;
 	}
 	p {
 		font-size: 1em;
 		color: $bodyColor;
+	}
+	form {
+		position: relative;
+	}
+	.container {
+		width: 50%;
+		max-width: 800px;
+		margin: 0 auto;
+		margin-top: 50px;
+		padding: 5%;
+		.input-field {
+			width: 100%;
+			font-family: Helvetica, sans-serif;
+			padding: 10px 0 10px 10px;
+			font-size: 18px;
+			border: none;
+			color: $bodyColor;
+		}
+		input[type=submit] {
+			height: 41px;
+			width: 70px;
+			border-radius: 0;
+			border: none;
+			position: absolute;
+			top: 0;
+			right: -10px;
+			color: white;
+			font-size: 18px;
+			&:hover {
+				opacity: .8;
+			}
+		}
 	}
 	.list-item {
 		padding: 5px 0; 

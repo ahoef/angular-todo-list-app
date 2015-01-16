@@ -7,45 +7,19 @@
     <script type="text/javascript" src="src/js/app/app.js"></script>
   </head>
 
-<!-- controller as syntax -->
-<!--   <body ng-controller="mainController as mainCtrl">
-  	<h1>{{ 'Hello World!' }}</h1>
-  	<img src="images/wild-horses.jpg">
-  	<p>An image of horses.</p>
-
-  <form role="form" ng-submit="mainCtrl.addTodo(todo)">
-      <div>
-        <input type="text" ng-model="todo" placeholder="Add something here"/>
-        <span>
-          <input type="submit" value="Add"/>
-        </span>
-      </div>
-
-    <p ng-repeat="todo in mainCtrl.todos track by $index">
-      <input type="text" ng-model="todo"/>
-      <button ng-click="mainCtrl.completeTodo(todo)" >&#10003;</button>
-      <button ng-click="mainCtrl.removeTodo(todo)">X</button>
-    </p>
-  </form>
-
-  </body> -->
-
-
-  <!-- $scope controller syntax -->
   <body>
-    <h1>{{ 'Hello World!' }}</h1>
+    <!-- <h1>{{ 'Hello World!' }}</h1> -->
 
     <div class="container" ng-controller="mainController">
+      <h1>A Simple Todo List App!</h1>
 
       <form role="form" ng-submit="addTodo(todo)">
-          <div>
-            <input type="text" ng-model="todo" placeholder="Add something here" />
+            <input class="input-field" type="text" ng-model="todo" placeholder="What's on your todo list?" />
             <span>
               <input type="submit" value="Add"/>
             </span>
-          </div>
       </form>
-          
+
 
         <div ui-sortable ng-model="todos">
             <p class="list-item" ng-repeat="todo in todos track by $index" >
