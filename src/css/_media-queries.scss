@@ -5,7 +5,14 @@
 }
 
 @media screen and (max-width: 640px) {
-	body .container {
-		width: 90%;
+	body {
+		.container {
+			width: 90%;
+			margin-top: 0;
+		}
+		h1 {
+			font-size: 1.5em;
+			margin: 30px 15px;
+		}
 	}
 }

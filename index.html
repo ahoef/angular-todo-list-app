@@ -2,7 +2,7 @@
 <html ng-app="todoApp">
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    
+
     <link rel="stylesheet" href="dest/css/base.min.css">
     <script type="text/javascript" src="dest/js/jquery.min.js"></script>
     <script type="text/javascript" src="dest/js/angular.min.js"></script>
@@ -27,13 +27,15 @@
 
       <hr>
 
-      <div ui-sortable ng-model="todos">
-          <p class="list-item" ng-repeat="todo in todos track by $index" >
-            <input type="text" ng-model="todo" ng-class="{completed: todos.completed}"/>
-            <span ng-model="priority">{{priority}}</span>
-            <button ng-click="completeTodo(todo)" >&#10003;</button>
-            <button ng-click="removeTodo($index)">X</button>
-          </p>
+      <div ui-sortable ng-model="todos" class="todo-list">
+          <div class="list-item" ng-repeat="todo in todos track by $index" >
+            <input class="input-field" type="text" ng-model="todo" ng-class="{completed: todos.completed}"/>
+            <div class="controls">
+              <span ng-model="priority">{{priority}}</span>
+              <button ng-click="completeTodo(todo)" >&#10003;</button>
+              <button ng-click="removeTodo($index)">X</button>
+            </div>
+          </div>
       </div>
     </div>
 

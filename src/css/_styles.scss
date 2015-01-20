@@ -13,6 +13,7 @@ body {
 	}
 	form {
 		position: relative;
+		margin-bottom: 30px;
 	}
 	.container {
 		width: 50%;
@@ -21,9 +22,9 @@ body {
 		margin-top: 50px;
 		padding: 5%;
 		.input-field {
-			width: 100%;
+			width: 96%;
 			font-family: Helvetica, sans-serif;
-			padding: 10px 0 10px 0px;
+			padding: 10px;
 			font-size: 18px;
 			border: none;
 			color: $bodyColor;
@@ -56,6 +57,12 @@ body {
 	.list-item {
 		padding: 5px 0; 
 		cursor: move;
+		position: relative;
+		.controls {
+			position: absolute;
+			right: 3%;
+			top: 15px;
+		}
 	}
 	.completed {
 		text-decoration: line-through;
