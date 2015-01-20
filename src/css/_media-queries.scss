@@ -9,10 +9,16 @@
 		.container {
 			width: 90%;
 			margin-top: 0;
+			input[type=submit] {
+				right: -7px;
+			}
 		}
 		h1 {
 			font-size: 1.5em;
 			margin: 30px 15px;
+		}
+		.todo-list {
+			width: 100%;
 		}
 	}
 }

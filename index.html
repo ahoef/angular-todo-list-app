@@ -4,6 +4,8 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="dest/css/base.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <script type="text/javascript" src="dest/js/jquery.min.js"></script>
     <script type="text/javascript" src="dest/js/angular.min.js"></script>
     <script type="text/javascript" src="src/js/app/app.js"></script>
@@ -25,15 +27,13 @@
             </span>
       </form>
 
-      <hr>
-
       <div ui-sortable ng-model="todos" class="todo-list">
           <div class="list-item" ng-repeat="todo in todos track by $index" >
             <input class="input-field" type="text" ng-model="todo" ng-class="{completed: todos.completed}"/>
             <div class="controls">
               <span ng-model="priority">{{priority}}</span>
-              <button ng-click="completeTodo(todo)" >&#10003;</button>
-              <button ng-click="removeTodo($index)">X</button>
+              <span ng-click="completeTodo(todo)" ><i class="fa fa-check"></i></span>
+              <span ng-click="removeTodo($index)"><i class="fa fa-times"></i></span>
             </div>
           </div>
       </div>

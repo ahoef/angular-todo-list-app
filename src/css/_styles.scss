@@ -13,7 +13,7 @@ body {
 	}
 	form {
 		position: relative;
-		margin-bottom: 30px;
+		margin-bottom: 35px;
 	}
 	.container {
 		width: 50%;
@@ -51,20 +51,41 @@ body {
 			border-radius: 0%;
 			border: none;
 			background-color: #aaa;
-			right: 15%;
+			right: 70px;
+			color: white;
+			font-family: Helvetica, sans-serif;
+			font-size: 18px;
 		}
 	}
-	.list-item {
-		padding: 5px 0; 
-		cursor: move;
-		position: relative;
-		.controls {
-			position: absolute;
-			right: 3%;
-			top: 15px;
-		}
-	}
+
 	.completed {
 		text-decoration: line-through;
+	}
+	.todo-list {
+		width: 85%;
+		margin: 0 auto;
+		.input-field {
+			background: none;
+			color: white;
+		}
+		.list-item {
+			padding: 5px 0; 
+			cursor: move;
+			position: relative;
+			border-bottom: 1px dashed white;
+			.controls {
+				position: absolute;
+				right: 3%;
+				top: 15px;
+				color: white;
+			}
+			i {
+				margin-left: 15px;
+				font-size: 20px;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
 	}
 }
