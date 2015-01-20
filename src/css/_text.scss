@@ -24,7 +24,7 @@ body {
 		.input-field {
 			width: 100%;
 			font-family: Helvetica, sans-serif;
-			padding: 10px 0 10px 10px;
+			padding: 10px 0 10px 0px;
 			font-size: 18px;
 			border: none;
 			color: $bodyColor;
@@ -36,12 +36,22 @@ body {
 			border: none;
 			position: absolute;
 			top: 0;
-			right: -10px;
+			right: 0px;
 			color: white;
 			font-size: 18px;
 			&:hover {
 				opacity: .8;
 			}
+		}
+		select {
+			position: absolute;
+			top: 0;
+			background: none;
+			height: 41px;
+			border-radius: 0%;
+			border: none;
+			background-color: #aaa;
+			right: 15%;
 		}
 	}
 	.list-item {

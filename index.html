@@ -15,19 +15,24 @@
 
       <form role="form" ng-submit="addTodo(todo)">
             <input class="input-field" type="text" ng-model="todo" placeholder="What's on your todo list?" />
+            <select ng-model="priority" ng-options="priority for priorities in [5,4,3,2,1]" title="Priority" required>
+            <option value="">Priority</option>
+          </select>
             <span>
               <input type="submit" value="Add"/>
             </span>
       </form>
 
+      <hr>
 
-        <div ui-sortable ng-model="todos">
-            <p class="list-item" ng-repeat="todo in todos track by $index" >
-              <input type="text" ng-model="todo" ng-class="{completed: todos.completed}"/>
-              <button ng-click="completeTodo(todo)" >&#10003;</button>
-              <button ng-click="removeTodo($index)">X</button>
-            </p>
-        </div>
+      <div ui-sortable ng-model="todos">
+          <p class="list-item" ng-repeat="todo in todos track by $index" >
+            <input type="text" ng-model="todo" ng-class="{completed: todos.completed}"/>
+            <span ng-model="priority">{{priority}}</span>
+            <button ng-click="completeTodo(todo)" >&#10003;</button>
+            <button ng-click="removeTodo($index)">X</button>
+          </p>
+      </div>
     </div>
 
   </body>
