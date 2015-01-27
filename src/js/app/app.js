@@ -33,9 +33,13 @@
 			    $scope.todos.splice(index, 1);
 		    };
 
-		    $scope.completeTodo = function (todo) {
+		    $scope.completeTodo = function(todo) {
 		    	todo.completed = true;
-		    	// console.log($scope.todos);
+		    }
+
+		    $scope.changeSort = function(value) {
+		    	console.log('sorted');
+		    	$scope.sort = value;
 		    }
 		});
 

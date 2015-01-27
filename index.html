@@ -30,7 +30,7 @@
       </form>
 
       <div ui-sortable ng-model="todos" class="todo-list">
-          <div class="list-item" ng-repeat="todo in todos track by $index" >
+          <div class="list-item" ng-repeat="todo in todos | orderBy:sort:reverse track by $index" >
             <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
             <div class="controls" >
               <span >#{{todo.priority}}</span>
@@ -39,6 +39,8 @@
             </div>
           </div>
       </div>
+
+      <div class="instructions">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">Sort by Priority</a></div>
 
     </div>
 
