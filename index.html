@@ -9,19 +9,21 @@
     <script type="text/javascript" src="dest/js/jquery.min.js"></script>
     <script type="text/javascript" src="dest/js/angular.min.js"></script>
     <script type="text/javascript" src="src/js/app/app.js"></script>
+    <script type="text/javascript" src="src/js/app/site.js"></script>
   </head>
 
   <body>
-    <!-- <h1>{{ 'Hello World!' }}</h1> -->
-
     <div class="container" ng-controller="mainController">
       <h1>A Simple Todo List App!</h1>
 
       <form role="form" ng-submit="addTodo(todo)">
-            <input class="input-field" type="text" ng-model="todo" placeholder="What's on your todo list?" />
-            <select ng-model="priority" ng-options="priority for priorities in [5,4,3,2,1]" title="Priority" required>
-            <option value="">Priority</option>
-          </select>
+            <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" />
+            <div class="select-overlay">Priority</div>
+            <select ng-model="todo.priority" title="Priority" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
             <span>
               <input type="submit" value="Add"/>
             </span>
@@ -29,10 +31,10 @@
 
       <div ui-sortable ng-model="todos" class="todo-list">
           <div class="list-item" ng-repeat="todo in todos track by $index" >
-            <input class="input-field" type="text" ng-model="todo" ng-class="{completed: todos.completed}"/>
-            <div class="controls">
-              <span ng-model="priority">{{priority}}</span>
-              <span ng-click="completeTodo(todo)" ><i class="fa fa-check"></i></span>
+            <input class="input-field" type="text" ng-model="todo.item" />
+            <div class="controls" >
+              <span >#{{todo.priority}}</span>
+              <span ng-click="completeTodo($index)" ng-model="todo.completed"><i class="fa fa-check"></i></span>
               <span ng-click="removeTodo($index)"><i class="fa fa-times"></i></span>
             </div>
           </div>

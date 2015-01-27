@@ -25,18 +25,17 @@
 			 	console.log('addTodo was called');
 			    $scope.todos.push(todo);
 			    $scope.todo = '';
+			    $('.select-overlay').text('Priority');
 			};
 
 			$scope.removeTodo = function(index) {
 			    $scope.todos.splice(index, 1);
-			    console.log($scope.todos);
 		    };
 
-		    $scope.completeTodo = function (todo) {
+		    $scope.completeTodo = function (index) {
 		    	$scope.todos.completed = true;
-		    	console.log($scope.todos.completed);
+		    	console.log($scope.todos);
 		    }
-
 		});
 
 })(window.angular);
