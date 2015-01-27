@@ -26,20 +26,18 @@
 			    $scope.todos.push(todo);
 			    $scope.todo = '';
 			    $('.select-overlay').text('Priority');
+			    // console.log($scope.todos);
 			};
 
 			$scope.removeTodo = function(index) {
 			    $scope.todos.splice(index, 1);
 		    };
 
-		    $scope.completeTodo = function (index) {
-		    	$scope.todos.completed = true;
-		    	console.log($scope.todos);
+		    $scope.completeTodo = function (todo) {
+		    	todo.completed = true;
+		    	// console.log($scope.todos);
 		    }
 		});
 
 })(window.angular);
-
-// model not binding to individual item that gets completed
-
 

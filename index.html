@@ -31,14 +31,15 @@
 
       <div ui-sortable ng-model="todos" class="todo-list">
           <div class="list-item" ng-repeat="todo in todos track by $index" >
-            <input class="input-field" type="text" ng-model="todo.item" />
+            <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
             <div class="controls" >
               <span >#{{todo.priority}}</span>
-              <span ng-click="completeTodo($index)" ng-model="todo.completed"><i class="fa fa-check"></i></span>
+              <span ng-click="completeTodo(todo)" ng-model="todo.completed"><i class="fa fa-check"></i></span>
               <span ng-click="removeTodo($index)"><i class="fa fa-times"></i></span>
             </div>
           </div>
       </div>
+
     </div>
 
   </body>
