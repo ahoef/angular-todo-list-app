@@ -37,10 +37,6 @@
 		    	todo.completed = true;
 		    }
 
-		    $scope.changeSort = function(value) {
-		    	console.log('sorted');
-		    	$scope.sort = value;
-		    }
 		});
 
 })(window.angular);

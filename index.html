@@ -14,7 +14,7 @@
 
   <body>
     <div class="container" ng-controller="mainController">
-      <h1>A Simple Todo List App!</h1>
+      <h1>A Simple Todo List App</h1>
 
       <form role="form" ng-submit="addTodo(todo)">
             <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" />
@@ -39,8 +39,18 @@
             </div>
           </div>
       </div>
+      <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">sort by priority</a>!</div>
 
-      <div class="instructions">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">Sort by Priority</a></div>
+      <section class="links">
+        <ul class="info">
+          <li class="about"><a ng-click="aboutModal = true">About this App</a></li>
+          <li class="view-source"><a href="https://github.com/ahoefinger/angular-todo-list-app" target="_blank">Github Repo</a></li>
+        </ul>
+
+        <div class="about-modal" ng-show="aboutModal" >This Angular app uses Stretching chase the red dot scratched rip the couch, claw leap attack sleep on your keyboard rip the couch chuf feed me meow. Stretching chase the red dot hairball climb the curtains stretching rip the couch, toss the mousie stuck in a tree toss the mousie eat.
+          <a class="close" ng-click="aboutModal = false">X</a>
+        </div>
+      </section>
 
     </div>
 

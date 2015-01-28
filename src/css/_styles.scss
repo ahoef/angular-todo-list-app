@@ -2,6 +2,7 @@ body {
 	font-family: Helvetica, sans-serif;
 	background-image: url('/images/clouds.jpg');
 	background-size: cover;
+	color: white;
 	h1 {
 		font-size: 1.75em;
 		color: white;
@@ -111,6 +112,66 @@ body {
 	.instructions {
 		text-align: center;
 		color: white;
-		padding: 30px;
+		padding: 40px;
+		a {
+			border-bottom: 1px solid;
+			cursor: pointer;
+		}
 	}
+	.info {
+		padding-left: 0;
+		list-style: none;
+		text-align: center;
+		margin-bottom: 25px;
+		margin-top: 50px;
+		li {
+			display: inline-block;
+			margin: 0 2%;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		a {
+			color: white;
+			text-decoration: none;
+			border-bottom: 1px solid;
+		}
+	}
+	.links {
+		position: relative;
+	}
+	.about-modal {
+		position: relative;
+		padding: 6%;
+		line-height: 26px;
+		background-color: white;
+		opacity: 0.5;
+		color: #444;
+		width: 55%;
+		margin: 0 auto;
+		&:before {
+			content: "";
+			width: 0;
+			height: 0;
+			border: 12px solid transparent;
+			border-color: #fff transparent transparent;
+			position: absolute;
+			top: -10px;
+			left: 35%;
+			border-bottom: 10px solid #fff;
+			border-top: 0;
+		}
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 15px;
+			opacity: .8;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	// .hide {
+	// 	display: none;
+	// }
 }
