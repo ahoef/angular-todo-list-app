@@ -38,25 +38,33 @@
               <span ng-click="removeTodo($index)"><i class="fa fa-times"></i></span>
             </div>
           </div>
+          <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">sort by priority</a>!</div>
       </div>
-      <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">sort by priority</a>!</div>
+      
 
-      <section class="links">
+<!--       <section class="links">
         <ul class="info">
-          <li class="about"><a ng-click="aboutModal = true">About this App</a></li>
+          <li class="about"></li>
           <li class="view-source"><a href="https://github.com/ahoefinger/angular-todo-list-app" target="_blank">Github Repo</a></li>
         </ul>
 
-        <div class="about-modal" ng-show="aboutModal" >This Angular app uses Stretching chase the red dot scratched rip the couch, claw leap attack sleep on your keyboard rip the couch chuf feed me meow. Stretching chase the red dot hairball climb the curtains stretching rip the couch, toss the mousie stuck in a tree toss the mousie eat.
-          <a class="close" ng-click="aboutModal = false">X</a>
-        </div>
-      </section>
+
+      </section> -->
 
     </div>
 
   </body>
 
   <footer>
+    <a ng-click="aboutModal = true">About this App</a>
+          <div class="about-modal" ng-show="aboutModal" >This Angular app uses Stretching chase the red dot scratched rip the couch, claw leap attack sleep on your keyboard rip the couch chuf feed me meow. Stretching chase the red dot hairball climb the curtains stretching rip the couch, toss the mousie stuck in a tree toss the mousie eat.
+          <a class="close" ng-click="aboutModal = false">X</a>
+          <ul class="social-links">
+            <li><a href="https://github.com/ahoefinger/angular-todo-list-app" target="_blank"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://twitter.com/ahoefinger" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="mailto:alexandra.hoefinger@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+          </ul>
+        </div>
   </footer>
 
  </html>

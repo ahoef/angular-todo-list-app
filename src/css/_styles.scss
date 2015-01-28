@@ -85,6 +85,7 @@ body {
 	.todo-list {
 		width: 85%;
 		margin: 0 auto;
+		margin-bottom: 100px;
 		.input-field {
 			background: none;
 			color: white;
@@ -118,60 +119,94 @@ body {
 			cursor: pointer;
 		}
 	}
-	.info {
-		padding-left: 0;
-		list-style: none;
-		text-align: center;
-		margin-bottom: 25px;
-		margin-top: 50px;
-		li {
-			display: inline-block;
-			margin: 0 2%;
-			&:hover {
-				cursor: pointer;
-			}
-		}
-		a {
-			color: white;
-			text-decoration: none;
-			border-bottom: 1px solid;
-		}
-	}
-	.links {
-		position: relative;
-	}
-	.about-modal {
-		position: relative;
-		padding: 6%;
-		line-height: 26px;
+	// .info {
+	// 	padding-left: 0;
+	// 	list-style: none;
+	// 	text-align: center;
+	// 	margin-bottom: 25px;
+	// 	margin-top: 50px;
+	// 	li {
+	// 		display: inline-block;
+	// 		margin: 0 2%;
+	// 		&:hover {
+	// 			cursor: pointer;
+	// 		}
+	// 	}
+	// 	a {
+	// 		color: white;
+	// 		text-decoration: none;
+	// 		border-bottom: 1px solid;
+	// 	}
+	// }
+	// .links {
+	// 	position: relative;
+	// }
+
+	footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
 		background-color: white;
 		opacity: 0.5;
 		color: #444;
-		width: 55%;
-		margin: 0 auto;
-		&:before {
-			content: "";
-			width: 0;
-			height: 0;
-			border: 12px solid transparent;
-			border-color: #fff transparent transparent;
-			position: absolute;
-			top: -10px;
-			left: 35%;
-			border-bottom: 10px solid #fff;
-			border-top: 0;
-		}
-		.close {
-			position: absolute;
-			top: 10px;
-			right: 15px;
-			opacity: .8;
+		text-align: center;
+		padding: 20px;
+		> a {
+			border-bottom: 1px solid;
 			&:hover {
 				cursor: pointer;
 			}
 		}
+		.about-modal {
+			position: relative;
+			padding: 6%;
+			line-height: 26px;
+			background-color: white;
+			opacity: 0.5;
+			color: #444;
+			width: 55%;
+			margin: 0 auto;
+			&:before {
+				content: "";
+				width: 0;
+				height: 0;
+				border: 12px solid transparent;
+				border-color: #fff transparent transparent;
+				position: absolute;
+				top: -10px;
+				left: 35%;
+				border-bottom: 10px solid #fff;
+				border-top: 0;
+			}
+			.close {
+				position: absolute;
+				top: 10px;
+				right: 15px;
+				opacity: .8;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+		ul {
+			padding-left: 0;
+			list-style: none;
+			text-align: center;
+			li {
+				display: inline-block;
+				padding: 0 10px;
+				font-size: 28px;
+				&:last-child {
+					font-size: 24px;
+				}
+			}
+			a {
+				text-decoration: none;
+				color: #444;
+			}
+		}
+
+
 	}
-	// .hide {
-	// 	display: none;
-	// }
 }
