@@ -1,5 +1,14 @@
 $headlineColor: #888;
 $bodyColor: #555;
 
+@mixin triangle {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-color: white transparent transparent transparent;
+    position: absolute;
+}
+
 @import "_styles";
 @import "_media-queries";

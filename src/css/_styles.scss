@@ -56,14 +56,9 @@ body {
 			padding: 10px 40px 10px 15px;
 			font-size: 18px;
 		  	&:after {
-			    content: "";
-			    width: 0;
-			    height: 0;
-			    border: 5px solid transparent;
-			    border-color: white transparent transparent transparent;
-			    position: absolute;
-			    top: 20px;
-			    right: 15px;
+		  		@include triangle;
+		  		top: 20px;
+    			right: 15px;
 		  	}
 		}
 
@@ -157,6 +152,12 @@ body {
 			&:hover {
 				cursor: pointer;
 			}
+			&:after {
+				@include triangle;
+				top: 20px;
+    			right: 15px;
+    			border-color: #444 transparent transparent;
+			}
 		}
 		.about-modal {
 			position: relative;
@@ -167,18 +168,9 @@ body {
 			color: #444;
 			width: 55%;
 			margin: 0 auto;
-			&:before {
-				content: "";
-				width: 0;
-				height: 0;
-				border: 12px solid transparent;
-				border-color: #fff transparent transparent;
-				position: absolute;
-				top: -10px;
-				left: 35%;
-				border-bottom: 10px solid #fff;
-				border-top: 0;
-			}
+			// &:before {
+			// 	@include triangle;	
+			// }
 			.close {
 				position: absolute;
 				top: 10px;
