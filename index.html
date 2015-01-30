@@ -2,9 +2,9 @@
 <html ng-app="todoApp">
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="This is a simple todo list app built by Alexandra Hoefinger, using AngularJS, gulp.js, and Sass">
 
     <link rel="stylesheet" href="dest/css/base.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <script type="text/javascript" src="dest/js/jquery.min.js"></script>
     <script type="text/javascript" src="dest/js/angular.min.js"></script>
@@ -34,27 +34,26 @@
             <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
             <div class="controls" >
               <span >#{{todo.priority}}</span>
-              <span ng-click="completeTodo(todo)" ng-model="todo.completed"><i class="fa fa-check"></i></span>
-              <span ng-click="removeTodo($index)"><i class="fa fa-times"></i></span>
+              <span ng-click="completeTodo(todo)" ng-model="todo.completed"><i class="icon-check"></i></span>
+              <span ng-click="removeTodo($index)"><i class="icon-cross"></i></span>
             </div>
           </div>
           <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">sort by priority</a>!</div>
       </div>
     </div>
+
+    <footer ng-init="isOpen = false">
+      <div class="mini-footer" >
+        <a ng-click="isOpen = !isOpen">About this App<span class="caret" ng-class="{'up': isOpen, 'down': !isOpen}"></a>
+      </div>
+      <div class="expanded-footer" ng-class="{'open': isOpen, 'closed': !isOpen}">
+        <p>This app is built with AngularJS, gulp.js, and Sass. It uses the Angular ui-sortable directive to enable drag + drop list reordering, and it also uses the Angular local storage module to persist data in browsers. Feel free to create pull requests with bug fixes or new features!</p>
+        <ul class="social-links">
+          <li><a href="https://github.com/ahoefinger/angular-todo-list-app" target="_blank"><i class="icon-github"></i></a></li>
+          <li><a href="https://twitter.com/ahoefinger" target="_blank"><i class="icon-twitter"></i></a></li>
+          <li><a href="mailto:alexandra.hoefinger@gmail.com"><i class="icon-mail"></i></a></li>
+        </ul>
+      </div>
+    </footer>
   </body>
-
-  <footer ng-init="isOpen = false">
-    <div class="mini-footer" >
-      <a ng-click="isOpen = !isOpen">About this App<span class="caret" ng-class="{'up': isOpen, 'down': !isOpen}"></a>
-    </div>
-    <div class="expanded-footer" ng-class="{'open': isOpen, 'closed': !isOpen}">
-      <p>This app is built with AngularJS, gulp.js, and Sass. It uses the Angular ui-sortable directive to enable drag + drop list reordering, and it also uses the Angular local storage module to persist data in browsers. Feel free to create pull requests with bug fixes or new features!</p>
-      <ul class="social-links">
-        <li><a href="https://github.com/ahoefinger/angular-todo-list-app" target="_blank"><i class="fa fa-github"></i></a></li>
-        <li><a href="https://twitter.com/ahoefinger" target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="mailto:alexandra.hoefinger@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
-      </ul>
-    </div>
-  </footer>
-
- </html>
+</html>

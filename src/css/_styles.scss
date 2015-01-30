@@ -1,17 +1,15 @@
 body {
-	font-family: Helvetica, sans-serif;
+	font-family: $sans-serif;
 	background-image: url('/images/clouds.jpg');
 	background-size: cover;
-	color: white;
+	color: $blackish;
+	text-align: center;
 	h1 {
-		font-size: 1.75em;
-		color: white;
-		text-align: center;
+		font-size: 28px;
+		color: $white;
 		margin: 40px;
-	}
-	p {
-		font-size: 1em;
-		color: $bodyColor;
+		font-weight: 400;
+		letter-spacing: .01em;
 	}
 	form {
 		position: relative;
@@ -24,11 +22,12 @@ body {
 		padding: 5%;
 		.input-field {
 			width: 96%;
-			font-family: Helvetica, sans-serif;
-			padding: 10px;
-			font-size: 18px;
+			font-family: $sans-serif;
+			padding: 12px;
+			font-size: 15px;
 			border: none;
-			color: $bodyColor;
+			color: #aaa;
+			letter-spacing: .01em;
 		}
 		input[type=submit] {
 			height: 41px;
@@ -38,8 +37,10 @@ body {
 			position: absolute;
 			top: 0;
 			right: 0px;
-			color: white;
-			font-size: 18px;
+			color: $white;
+			font-size: 16px;
+			font-family: $sans-serif;
+			padding-top: 5px;
 		}
 		.select-overlay {
 			position: absolute;
@@ -47,17 +48,15 @@ body {
 			right: 70px;
 			z-index: 0;
 			background-color: #aaa;
-			color: #fff;
-			font-family: Helvetica,sans-serif;
-			padding: 10px 40px 10px 15px;
-			font-size: 18px;
+			color: $white;
+			padding: 13px 40px 10px 15px;
+			font-size: 16px;
 		  	&:after {
 		  		@include triangle;
 		  		top: 20px;
     			right: 15px;
 		  	}
 		}
-
 		select {
 			z-index: 1;
 			opacity: 0;
@@ -70,41 +69,43 @@ body {
 		}
 	}
 
-	.completed {
-		text-decoration: line-through;
-	}
 	.todo-list {
 		width: 85%;
 		margin: 0 auto;
 		margin-bottom: 100px;
 		.input-field {
 			background: none;
-			color: white;
+			color: $white;
 		}
 		.list-item {
 			padding: 5px 0; 
 			cursor: move;
 			position: relative;
-			border-bottom: 1px dashed white;
+			border-bottom: 1px dashed $white;
 			.controls {
 				position: absolute;
-				right: 3%;
-				top: 15px;
-				color: white;
+				right: 2.5%;
+				top: 16px;
+				color: $white;
 			}
 			i {
 				margin-left: 15px;
 				font-size: 20px;
+				// font-weight: bold;
 				&:hover {
 					cursor: pointer;
 				}
 			}
 		}
+		.completed {
+			text-decoration: line-through;
+		}
 	}
 	.instructions {
-		text-align: center;
-		color: white;
+		color: $white;
 		padding: 40px;
+		font-size: 15px;
+		letter-spacing: .01em;
 		a {
 			border-bottom: 1px solid;
 			cursor: pointer;
@@ -116,13 +117,11 @@ body {
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: white;
+		background-color: $white;
 		opacity: 0.5;
-		color: #444;
-		text-align: center;
 		padding: 16px;
 		.mini-footer a {
-			font-size: 18px;
+			font-size: 16px;
 			&:hover {
 				cursor: pointer;
 			}
@@ -132,11 +131,11 @@ body {
 					@include triangle;
 					top: 22px;
 	    			border: 7px solid transparent;
-	    			border-color: #444 transparent transparent;
+	    			border-color: $blackish transparent transparent;
 				}
 				&.up {
 					&:after {
-						border-bottom: 7px solid #444;
+						border-bottom: 7px solid $blackish;
 	    				border-top: 0px;
 					}
 				}
@@ -145,29 +144,27 @@ body {
 		.expanded-footer {
 			position: relative;
 			line-height: 26px;
-			background-color: white;
-			color: #444;
+			background-color: $white;
+			color: $blackish;
 			width: 55%;
 			margin: 0 auto;
-			font-size: 16px;
+			font-size: 14px;
 		}
 		ul {
 			padding-left: 0;
 			list-style: none;
-			text-align: center;
 			margin-bottom: 0;
 			li {
 				display: inline-block;
 				padding: 0 10px;
 				font-size: 28px;
 				&:last-child {
-					font-size: 24px;
-					vertical-align: top;
+					font-size: 28px;
 				}
 			}
 			a {
 				text-decoration: none;
-				color: #444;
+				color: $blackish;
 			}
 		}
 		.closed {
@@ -176,6 +173,5 @@ body {
 		.open {
 			display: block;
 		}
-
 	}
 }

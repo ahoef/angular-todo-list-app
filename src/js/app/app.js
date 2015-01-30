@@ -22,11 +22,9 @@
 			}, true);
 
 			$scope.addTodo = function(todo) {
-			 	console.log('addTodo was called');
 			    $scope.todos.push(todo);
 			    $scope.todo = '';
-			    $('.select-overlay').text('Priority');
-			    // console.log($scope.todos);
+			    // $('.select-overlay').text('Priority');
 			};
 
 			$scope.removeTodo = function(index) {

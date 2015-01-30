@@ -1,12 +1,12 @@
-var gulp = require('gulp');
-	 gutil = require('gulp-util');
-	 sass = require('gulp-ruby-sass');
-    uglify = require('gulp-uglify'),
-    minifycss = require('gulp-minify-css'),
-    watch = require('gulp-watch'),
-    concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    connect = require('gulp-connect');
+var   gulp = require('gulp');
+      gutil = require('gulp-util');
+      sass = require('gulp-ruby-sass');
+      uglify = require('gulp-uglify'),
+      minifycss = require('gulp-minify-css'),
+      watch = require('gulp-watch'),
+      concat = require('gulp-concat'),
+      notify = require('gulp-notify'),
+      connect = require('gulp-connect');
 
 
 gulp.task('connect', function() {
@@ -25,10 +25,10 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function() {
-//   gulp.src('src/js/app/*.js')
-//   	.pipe(uglify())
-//   	.pipe(concat("app.min.js"))
-//   	.pipe(gulp.dest('dest/js'));
+  gulp.src('src/js/app/*.js')
+  	.pipe(uglify())
+  	.pipe(concat("app.min.js"))
+  	.pipe(gulp.dest('dest/js'));
 
   gulp.src('src/js/angular/*.js')
     .pipe(uglify())
