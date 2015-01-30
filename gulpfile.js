@@ -1,11 +1,17 @@
 var gulp = require('gulp');
-	gutil = require('gulp-util');
-	sass = require('gulp-ruby-sass');
+	 gutil = require('gulp-util');
+	 sass = require('gulp-ruby-sass');
     uglify = require('gulp-uglify'),
     minifycss = require('gulp-minify-css'),
     watch = require('gulp-watch'),
     concat = require('gulp-concat'),
-    notify = require('gulp-notify');
+    notify = require('gulp-notify'),
+    connect = require('gulp-connect');
+
+
+gulp.task('connect', function() {
+  connect.server();
+});
 
 gulp.task('sass', function () {
 	gulp.src('src/css/*.scss')
@@ -53,4 +59,4 @@ gulp.task('watch', function() {
 	  });
 });
 
-gulp.task('default', ['sass', 'js', 'watch']);
+gulp.task('default', ['connect', 'sass', 'js', 'watch']);
