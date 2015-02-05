@@ -1,7 +1,12 @@
 $(function() {
-    $('select')
-        .on('change', function(){
+	var $selectOverlay = $('.select-overlay');
+
+    $('select').on('change', function(){
         $self=$(this);
-        $('.select-overlay').text($self.val());
+        $selectOverlay.text($self.val());
+    });
+
+    $('.form-submit').on('click', function() {
+    	$selectOverlay.text('Priority');
     });
 });

@@ -39,14 +39,9 @@ gulp.task('js', function() {
     .pipe(uglify())
     .pipe(concat("jquery.min.js"))
     .pipe(gulp.dest('dest/js'));
-
-	gulp.src('src/js/vendors/*.js')
-  	.pipe(uglify())
-  	.pipe(concat("vendors.min.js"))
-  	.pipe(gulp.dest('dest/js'))
-  	.pipe(notify({ 
-  		message: "JS compiled!"
-  	}));
+    .pipe(notify({ 
+      message: "JS compiled!"
+    }));
 });
 
 gulp.task('watch', function() {

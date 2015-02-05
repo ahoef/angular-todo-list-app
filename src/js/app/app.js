@@ -4,7 +4,7 @@
 
 	angular.module('todoApp', ['ui.sortable', 'LocalStorageModule'])
 
-  		.controller('mainController', function($scope, localStorageService) {
+  		.controller('mainController', function($scope, $filter, localStorageService) {
 
 			var todosInStore = localStorageService.get('todos');
 
@@ -24,7 +24,6 @@
 			$scope.addTodo = function(todo) {
 			    $scope.todos.push(todo);
 			    $scope.todo = '';
-			    // $('.select-overlay').text('Priority');
 			};
 
 			$scope.removeTodo = function(index) {
@@ -33,6 +32,11 @@
 
 		    $scope.completeTodo = function(todo) {
 		    	todo.completed = true;
+		    }
+
+		    $scope.sortTodos = function() {
+		    	console.log('sort called');
+		    	$scope.todos = $filter('orderBy')($scope.todos, 'priority');
 		    }
 
 		});

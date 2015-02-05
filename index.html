@@ -19,26 +19,26 @@
       <form role="form" ng-submit="addTodo(todo)">
             <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" />
             <div class="select-overlay">Priority</div>
-            <select ng-model="todo.priority" title="Priority" required>
+            <select ng-model="todo.priority" title="Priority">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
             <span>
-              <input type="submit" value="Add"/>
+              <input class="form-submit" type="submit" value="Add"/>
             </span>
       </form>
 
       <div ui-sortable ng-model="todos" class="todo-list">
-          <div class="list-item" ng-repeat="todo in todos | orderBy:sort:reverse track by $index" >
+          <div class="list-item" ng-repeat="todo in todos track by $index" >
             <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
             <div class="controls" >
-              <span >#{{todo.priority}}</span>
+              <span ng-if="todo.priority">#{{todo.priority}}</span>
               <span ng-click="completeTodo(todo)" ng-model="todo.completed"><i class="icon-check"></i></span>
               <span ng-click="removeTodo($index)"><i class="icon-cross"></i></span>
             </div>
           </div>
-          <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sort='priority'; reverse=false">sort by priority</a>!</div>
+          <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sortTodos()">sort by priority</a>!</div>
       </div>
     </div>
 
