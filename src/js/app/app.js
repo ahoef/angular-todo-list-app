@@ -7,6 +7,8 @@
   		.controller('mainController', function($scope, $filter, localStorageService) {
 
 			var todosInStore = localStorageService.get('todos');
+			var isMobile = screen.width <= 640;
+			console.log(isMobile);
 
 			$scope.todos = todosInStore || [];
 
@@ -35,7 +37,6 @@
 		    }
 
 		    $scope.sortTodos = function() {
-		    	console.log('sort called');
 		    	$scope.todos = $filter('orderBy')($scope.todos, 'priority');
 		    }
 

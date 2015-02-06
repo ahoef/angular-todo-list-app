@@ -16,15 +16,31 @@
 			width: 90%;
 			margin-top: 0;
 			form {
-				margin-bottom: 55px;
-				select, .select-overlay {
-					top: 39px;
-					right: auto
+				.input-field {
+					margin-bottom: 10px;
 				}
-				input[type=submit] {
-					top: 39px;
+				.form-controls {
+					position: relative;
+					display: block;
+				}
+				.select-overlay {
+					position: relative;
+					display: inline-block;
 					right: auto;
-					left: 105px;
+					&:after {
+						top: 17px;
+						right: 18px;
+					}
+				}
+				select {
+					left: 8%;
+					width: 50%;
+				}
+
+				input[type=submit] {
+					position: relative;
+					margin-left: 8px;
+					height: 38px;
 				}
 			}
 		}

@@ -18,6 +18,7 @@
 
       <form role="form" ng-submit="addTodo(todo)">
         <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" required/>
+        <div class="form-controls">
           <div class="select-overlay">Priority</div>
           <select ng-model="todo.priority" title="Priority">
             <option value="1">1</option>
@@ -27,6 +28,7 @@
           <span>
             <input class="form-submit" type="submit" value="Add"/>
           </span>
+        </div>
       </form>
 
       <div ui-sortable ng-model="todos" class="todo-list">
@@ -38,7 +40,10 @@
               <span ng-click="removeTodo($index)"><i class="icon-cross"></i></span>
             </div>
           </div>
-          <div class="instructions" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sortTodos()">sort by priority</a>!</div>
+
+          <div class="instructions" ng-if="!isMobile" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sortTodos()">sort by priority</a>!</div>
+
+          <div class="instructions" ng-if="isMobile" ng-show="todos.length > 1"><a ng-click="sortTodos()">Sort items by priority</a>!</div>
       </div>
     </div>
 
