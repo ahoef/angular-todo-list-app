@@ -15,16 +15,31 @@
 		.container {
 			width: 90%;
 			margin-top: 0;
-			input[type=submit] {
-				right: -7px;
+			form {
+				margin-bottom: 55px;
+				select, .select-overlay {
+					top: 39px;
+					right: auto
+				}
+				input[type=submit] {
+					top: 39px;
+					right: auto;
+					left: 105px;
+				}
 			}
+		}
+		.todo-list {
+			width: 100%;
 		}
 		h1 {
 			font-size: 1.5em;
 			margin: 30px 15px;
 		}
-		.todo-list {
-			width: 100%;
+
+		footer {
+			.expanded-footer {
+				width: 100%;
+			}
 		}
 	}
 }

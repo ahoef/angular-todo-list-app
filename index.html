@@ -17,16 +17,16 @@
       <h1>A Simple Todo List App</h1>
 
       <form role="form" ng-submit="addTodo(todo)">
-            <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" />
-            <div class="select-overlay">Priority</div>
-            <select ng-model="todo.priority" title="Priority">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-            <span>
-              <input class="form-submit" type="submit" value="Add"/>
-            </span>
+        <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" required/>
+          <div class="select-overlay">Priority</div>
+          <select ng-model="todo.priority" title="Priority">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <span>
+            <input class="form-submit" type="submit" value="Add"/>
+          </span>
       </form>
 
       <div ui-sortable ng-model="todos" class="todo-list">

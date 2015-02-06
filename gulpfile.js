@@ -38,7 +38,7 @@ gulp.task('js', function() {
   gulp.src('src/js/jquery/*.js')
     .pipe(uglify())
     .pipe(concat("jquery.min.js"))
-    .pipe(gulp.dest('dest/js'));
+    .pipe(gulp.dest('dest/js'))
     .pipe(notify({ 
       message: "JS compiled!"
     }));
