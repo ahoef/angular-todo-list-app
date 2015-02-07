@@ -41,9 +41,9 @@
             </div>
           </div>
 
-          <div class="instructions" ng-if="!isMobile" ng-show="todos.length > 1">Drag items to change their order or <a ng-click="sortTodos()">sort by priority</a>!</div>
+          <div class="instructions desktop" ng-show="todos.length > 1" >Drag items to change their order or <a ng-click="sortTodos()">sort by priority</a>!</div>
 
-          <div class="instructions" ng-if="isMobile" ng-show="todos.length > 1"><a ng-click="sortTodos()">Sort items by priority</a>!</div>
+          <div class="instructions mobile" ng-show="todos.length > 1"><a ng-click="sortTodos()">Sort items by priority</a>!</div>
       </div>
     </div>
 
