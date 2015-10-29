@@ -4,7 +4,7 @@
 
 	angular.module('todoApp', ['ui.sortable', 'LocalStorageModule'])
 
-  		.controller('mainController', function($scope, $filter, localStorageService) {
+  		.controller('mainController', function($scope, $filter, localStorageService, $http, $rootScope) {
 
 			var todosInStore = localStorageService.get('todos');
 
@@ -40,8 +40,8 @@
 
 
 
-		    // For the current date and time
-
+		    // Get and set current date and time
+		    // function getDate() {
 		    $scope.getDate = function() {
 			    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			    	thisDate = new Date(),
@@ -57,8 +57,17 @@
 			    if (hour > 12) {
 			    	hour = hour - 12;
 			    	hourAbbrev = "PM";
-			    } else {
+			    } 
+			    else if (hour == 0) {
+			    	hour = 12;
 			    	hourAbbrev = "AM";
+			    } 
+			    else {
+			    	hourAbbrev = "AM";
+			    }
+
+			    if (minute < 10) {
+			    	minute = "0" + minute.toString();
 			    }
 
 			    dateAndTime.date = month + ' ' + day + ', ' + year;
@@ -69,6 +78,38 @@
 
 		    $scope.date = $scope.getDate().date;
 		    $scope.time = $scope.getDate().time;
+
+
+		    // Get location and call weather api
+		    // function getWeather() {
+		    	$scope.getWeather = function() {
+
+		    	// var resp = {};
+
+			   	navigator.geolocation.getCurrentPosition(function(position){
+			        	$scope.position = position;
+			   			$rootScope.$broadcast('location-found');
+			    });
+
+				$scope.$on('location-found', function(resp) {
+					var latitude = $scope.position.coords.latitude;
+				    var longitude = $scope.position.coords.longitude;
+				    console.log(latitude);
+				    console.log(longitude);
+
+					$http.get('http://api.wunderground.com/api/26f1bcbadc87fe35/conditions/forecast/alert/q/'+latitude+','+longitude+'.json')
+				        .success(function(response) {
+				          // $scope.resp = response;
+				          $scope.temp = Math.round(response.current_observation.temp_f);
+				          $scope.location = response.current_observation.display_location.city;
+				          // return resp;
+				        });
+				    // return resp;
+				    console.log($scope);
+				});
+			}
+
+			$scope.getWeather();
 
 		});
 
