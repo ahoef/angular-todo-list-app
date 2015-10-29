@@ -4,7 +4,7 @@
 
 	angular.module('todoApp', ['ui.sortable', 'LocalStorageModule'])
 
-  		.controller('mainController', function($scope, $filter, localStorageService) {
+  		.controller('mainController', function($scope, $filter, localStorageService, $http, $rootScope) {
 
 			var todosInStore = localStorageService.get('todos');
 
@@ -40,7 +40,7 @@
 
 
 
-		    // For the current date and time
+		    // Get and set current date and time
 
 		    $scope.getDate = function() {
 			    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -57,8 +57,17 @@
 			    if (hour > 12) {
 			    	hour = hour - 12;
 			    	hourAbbrev = "PM";
-			    } else {
+			    } 
+			    else if (hour == 0) {
+			    	hour = 12;
 			    	hourAbbrev = "AM";
+			    } 
+			    else {
+			    	hourAbbrev = "AM";
+			    }
+
+			    if (minute < 10) {
+			    	minute = "0" + minute.toString();
 			    }
 
 			    dateAndTime.date = month + ' ' + day + ', ' + year;
@@ -69,6 +78,33 @@
 
 		    $scope.date = $scope.getDate().date;
 		    $scope.time = $scope.getDate().time;
+
+
+
+		    // Get location and call weather api
+		    $scope.getWeather = function() {
+
+			   	navigator.geolocation.getCurrentPosition(function(position){
+			        	$scope.position = position;
+			   			$rootScope.$broadcast('location-found');
+			    });
+
+				$scope.$on('location-found', function() {
+					var latitude = $scope.position.coords.latitude;
+				    var longitude = $scope.position.coords.longitude;
+				    var response = $http.get('http://api.wunderground.com/api/26f1bcbadc87fe35/conditions/forecast/alert/q/'+latitude+','+longitude+'.json');
+				    // var data = response.$$state.value.data;
+				    console.log(response);
+
+				    return response;
+
+				});
+
+			//http://stackoverflow.com/questions/28146491/angular-http-returns-state-object
+
+			}
+
+			$scope.temp = $scope.getWeather();
 
 		});
 
