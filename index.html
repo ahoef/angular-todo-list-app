@@ -16,7 +16,8 @@
 
   <body>
     <div class="container" ng-controller="mainController">
-      <h1>A Simple Todo List App</h1>
+      <h1>{{date}}</h1>
+      <h1>{{time}}</h1>
 
       <form role="form" ng-submit="addTodo(todo)">
         <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" required/>

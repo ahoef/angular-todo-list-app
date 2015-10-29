@@ -38,6 +38,38 @@
 		    	$scope.todos = $filter('orderBy')($scope.todos, 'priority');
 		    }
 
+
+
+		    // For the current date and time
+
+		    $scope.getDate = function() {
+			    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+			    	thisDate = new Date(),
+			    	day = thisDate.getDate(),
+			    	monthNumber = thisDate.getMonth(),
+			    	month = monthArray[monthNumber],
+			    	year = thisDate.getFullYear(),
+			    	hour = thisDate.getHours(),
+			    	minute = thisDate.getMinutes(),
+			    	dateAndTime = {},
+			    	hourAbbrev;
+
+			    if (hour > 12) {
+			    	hour = hour - 12;
+			    	hourAbbrev = "PM";
+			    } else {
+			    	hourAbbrev = "AM";
+			    }
+
+			    dateAndTime.date = month + ' ' + day + ', ' + year;
+			    dateAndTime.time = hour + ":" + minute + " " + hourAbbrev;
+
+			    return dateAndTime;
+		    }
+
+		    $scope.date = $scope.getDate().date;
+		    $scope.time = $scope.getDate().time;
+
 		});
 
 })(window.angular);
