@@ -14,44 +14,35 @@ gulp.task('connect', function() {
 });
 
 gulp.task('sass', function () {
-	gulp.src('src/css/*.scss')
+	gulp.src('styles/src/*.scss')
 	.pipe(sass())
 	.pipe(minifycss())
 	.pipe(concat("base.min.css"))
-	.pipe(gulp.dest('dest/css'))
+	.pipe(gulp.dest('styles/dest'))
 	.pipe(notify({
       	message: "Sass compiled!"
     }));
 });
 
 gulp.task('js', function() {
-  gulp.src('src/js/app/*.js')
-  	.pipe(uglify())
-  	.pipe(concat("app.min.js"))
-  	.pipe(gulp.dest('dest/js'));
-
-  gulp.src('src/js/angular/*.js')
+  gulp.src('libraries/src/angular/*.js')
     .pipe(uglify())
     .pipe(concat("angular.min.js"))
-    .pipe(gulp.dest('dest/js'));
+    .pipe(gulp.dest('libraries/dest'));
 
-  gulp.src('src/js/jquery/*.js')
+  gulp.src('libraries/src/jquery/*.js')
     .pipe(uglify())
     .pipe(concat("jquery.min.js"))
-    .pipe(gulp.dest('dest/js'))
+    .pipe(gulp.dest('libraries/dest'))
     .pipe(notify({ 
       message: "JS compiled!"
     }));
 });
 
 gulp.task('watch', function() {
-  	gulp.watch('src/css/*.scss', function() {
+  	gulp.watch('styles/src/*.scss', function() {
     	gulp.run('sass');
   	});
-
-  	gulp.watch('src/js/app/*.js', function() {
-	    gulp.run('js');
-	  });
 });
 
 gulp.task('default', ['connect', 'sass', 'js', 'watch']);

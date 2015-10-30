@@ -163,6 +163,9 @@ body {
 			width: 55%;
 			margin: 0 auto;
 			font-size: 14px;
+			a {
+				color: $blackish;
+			}
 		}
 		ul {
 			padding-left: 0;
@@ -175,7 +178,6 @@ body {
 			}
 			a {
 				text-decoration: none;
-				color: $blackish;
 			}
 		}
 		.closed {

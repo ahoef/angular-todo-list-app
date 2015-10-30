@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html ng-app="dashboardApp">
   <head>
-        <title>A Simple Todo List App</title>
+    <title>A Simple Todo List App</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta name="description" content="This is a simple todo list app built by Alexandra Hoefinger, using AngularJS, Sass, gulp, localstorage, and the wunderground API">
 
-    <link rel="stylesheet" href="dest/css/base.min.css">
+    <link rel="stylesheet" href="./styles/dest/base.min.css">
     <link rel="icon" type="image/png" href="http://i.imgur.com/bsI3IOt.png">
     
-    <script type="text/javascript" src="dest/js/jquery.min.js"></script>
-    <script type="text/javascript" src="dest/js/angular.min.js"></script>
-    <script type="text/javascript" src="src/js/app/app.js"></script>
-    <script type="text/javascript" src="src/js/app/site.js"></script>
+    <script type="text/javascript" src="./libraries/dest/jquery.min.js"></script>
+    <script type="text/javascript" src="./libraries/dest/angular.min.js"></script>
+    <script type="text/javascript" src="./app/app.js"></script>
+    <script type="text/javascript" src="./scripts/site.js"></script>
   </head>
 
   <body>
     <div class="container">
-      <ng-include src="'./partials/dashboardData.html'"></ng-include>
-      <ng-include src="'./partials/todoList.html'"></ng-include>
+      <ng-include src="'./app/views/partials/dashboardData.html'"></ng-include>
+      <ng-include src="'./app/views/partials/todoList.html'"></ng-include>
     </div>
 
     <footer ng-init="isOpen = false">
@@ -25,7 +25,7 @@
         <a ng-click="isOpen = !isOpen">About this App<span class="caret" ng-class="{'up': isOpen, 'down': !isOpen}"></a>
       </div>
       <div class="expanded-footer" ng-class="{'open': isOpen, 'closed': !isOpen}">
-        <p>This app is built with AngularJS, gulp.js, and Sass. It uses the Angular ui-sortable directive to enable drag + drop list reordering, and it also uses the Angular local storage module to persist data in browsers. Feel free to create pull requests with bug fixes or new features!</p>
+        <p>This app is built with AngularJS, gulp.js, and Sass. It uses the Angular ui-sortable directive to enable drag + drop list reordering, and it also uses the Angular local storage module to persist data in browsers. If you have location detection enabled in your browser, the temperature and location you're seeing is data from the <a href="http://www.wunderground.com/weather/api/d/docs">Wunderground API</a>!</p>
         <ul class="social-links">
           <li><a href="https://github.com/ahoefinger/angular-todo-list-app" target="_blank"><i class="icon-github"></i></a></li>
           <li><a href="https://twitter.com/ahoefinger" target="_blank"><i class="icon-twitter"></i></a></li>
