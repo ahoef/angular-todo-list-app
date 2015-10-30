@@ -1,8 +1,7 @@
 $(function() {
-	var $selectOverlay = $('.select-overlay'),
-		 isDesktop = screen.width > 1024;
+	var $selectOverlay = $('.select-overlay');
 
-    //fake overlay
+    //fake overlay for priority drop down
     $('select').on('change', function(){
         $self=$(this);
         $selectOverlay.text($self.val());
@@ -11,14 +10,4 @@ $(function() {
     $('.form-submit').on('click', function() {
     	$selectOverlay.text('Priority');
     });
-
-    //mobile/desktop version of sort instructions
-    if (isDesktop) {
-    	$('.instructions.mobile').hide();
-    }
-    else {
-    	$('.instructions.desktop').hide();
-    }
-
-
 });

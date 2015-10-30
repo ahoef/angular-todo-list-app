@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="todoApp">
+<html ng-app="dashboardApp">
   <head>
-    <title>A Simple Todo List App</title>
+        <title>A Simple Todo List App</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="This is a simple todo list app built by Alexandra Hoefinger, using AngularJS, gulp.js, and Sass">
+    <meta name="description" content="This is a simple todo list app built by Alexandra Hoefinger, using AngularJS, Sass, gulp, localstorage, and the wunderground API">
 
     <link rel="stylesheet" href="dest/css/base.min.css">
     <link rel="icon" type="image/png" href="http://i.imgur.com/bsI3IOt.png">
@@ -15,43 +15,9 @@
   </head>
 
   <body>
-    <div class="container" ng-controller="mainController">
-      <h1>{{date}}</h1>
-      <h1>{{time}}</h1>
-      <div ng-if="temp !== undefined">
-        <h1>{{temp}}&deg;F</h1>
-        <h1>near {{location}}</h1>
-      </div>
-
-      <form role="form" ng-submit="addTodo(todo)">
-        <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" required/>
-        <div class="form-controls">
-          <div class="select-overlay">Priority</div>
-          <select ng-model="todo.priority" title="Priority">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <span>
-            <input class="form-submit" type="submit" value="Add"/>
-          </span>
-        </div>
-      </form>
-
-      <div ui-sortable ng-model="todos" class="todo-list">
-          <div class="list-item" ng-repeat="todo in todos track by $index" >
-            <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
-            <div class="controls" >
-              <span ng-if="todo.priority">#{{todo.priority}}</span>
-              <span ng-click="completeTodo(todo)" ng-model="todo.completed"><i class="icon-check"></i></span>
-              <span ng-click="removeTodo($index)"><i class="icon-cross"></i></span>
-            </div>
-          </div>
-
-          <div class="instructions desktop" ng-show="todos.length > 1" >Drag items to change their order or <a ng-click="sortTodos()">sort by priority</a>!</div>
-
-          <div class="instructions mobile" ng-show="todos.length > 1"><a ng-click="sortTodos()">Sort items by priority</a>!</div>
-      </div>
+    <div class="container">
+      <ng-include src="'./partials/dashboardData.html'"></ng-include>
+      <ng-include src="'./partials/todoList.html'"></ng-include>
     </div>
 
     <footer ng-init="isOpen = false">

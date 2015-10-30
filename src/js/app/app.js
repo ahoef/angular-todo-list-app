@@ -1,117 +1,105 @@
-(function(angular) {
-	'use strict';
+'use strict';
+
+var app = angular.module('dashboardApp', ['ui.sortable', 'LocalStorageModule'])
+
+app.controller('todoListCtrl', function($scope, $filter, localStorageService) {
+	var todoList = this,
+		todosInStore = localStorageService.get('myTodos');
+
+	todoList.isDesktop = $(window).width() > 1024;
+	todoList.todos = todosInStore || [];
+
+	$scope.$watch('t.todos', function () {
+		localStorageService.set('myTodos', todoList.todos);
+
+	    var lastIndex= todoList.todos.length - 1,
+	  		lastEl = todoList.todos[lastIndex];
+
+		if(lastEl === "" || lastEl === undefined || lastEl === null) {
+		  	todoList.todos.pop();
+		}
+	}, true);
+
+	todoList.addTodo = function(todo) {
+	    todoList.todos.push(todo);
+	    $scope.todo = '';
+	};
+
+	todoList.removeTodo = function(index) {
+	    todoList.todos.splice(index, 1);
+    };
+
+    todoList.completeTodo = function(todo) {
+    	todo.completed = true;
+    }
+
+    todoList.sortTodos = function() {
+    	todoList.todos = $filter('orderBy')(todoList.todos, 'priority');
+    }
+});
 
 
-	angular.module('todoApp', ['ui.sortable', 'LocalStorageModule'])
 
-  		.controller('mainController', function($scope, $filter, localStorageService, $http, $rootScope) {
+// controller for date, time, weather, and location
+app.controller('dashboardDataCtrl', function($scope, $http, $rootScope) {
+	var dashboardData = this;
 
-			var todosInStore = localStorageService.get('todos');
+    // get and set current date and time
+    dashboardData.getDate = function() {
+	    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	    	thisDate = new Date(),
+	    	day = thisDate.getDate(),
+	    	monthNumber = thisDate.getMonth(),
+	    	month = monthArray[monthNumber],
+	    	year = thisDate.getFullYear(),
+	    	hour = thisDate.getHours(),
+	    	minute = thisDate.getMinutes(),
+	    	dateAndTime = {},
+	    	hourAbbrev;
 
-			$scope.todos = todosInStore || [];
+	    if (hour > 12) {
+	    	hour = hour - 12;
+	    	hourAbbrev = "PM";
+	    } 
+	    else if (hour == 0) {
+	    	hour = 12;
+	    	hourAbbrev = "AM";
+	    } 
+	    else {
+	    	hourAbbrev = "AM";
+	    }
 
-			$scope.$watch('todos', function () {
-				localStorageService.set('todos', $scope.todos);
+	    if (minute < 10) {
+	    	minute = "0" + minute.toString();
+	    }
 
-			    var lastIndex= $scope.todos.length -1,
-			  		lastEl = $scope.todos[lastIndex];
+	    dateAndTime.date = month + ' ' + day + ', ' + year;
+	    dateAndTime.time = hour + ":" + minute + " " + hourAbbrev;
 
-				if(lastEl === "" || lastEl === undefined || lastEl === null) {
-				  	$scope.todos.pop();
-				}
-			}, true);
+	    return dateAndTime;
+    }
 
-			$scope.addTodo = function(todo) {
-			    $scope.todos.push(todo);
-			    $scope.todo = '';
-			};
-
-			$scope.removeTodo = function(index) {
-			    $scope.todos.splice(index, 1);
-		    };
-
-		    $scope.completeTodo = function(todo) {
-		    	todo.completed = true;
-		    }
-
-		    $scope.sortTodos = function() {
-		    	$scope.todos = $filter('orderBy')($scope.todos, 'priority');
-		    }
-
-
-
-		    // Get and set current date and time
-		    // function getDate() {
-		    $scope.getDate = function() {
-			    var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-			    	thisDate = new Date(),
-			    	day = thisDate.getDate(),
-			    	monthNumber = thisDate.getMonth(),
-			    	month = monthArray[monthNumber],
-			    	year = thisDate.getFullYear(),
-			    	hour = thisDate.getHours(),
-			    	minute = thisDate.getMinutes(),
-			    	dateAndTime = {},
-			    	hourAbbrev;
-
-			    if (hour > 12) {
-			    	hour = hour - 12;
-			    	hourAbbrev = "PM";
-			    } 
-			    else if (hour == 0) {
-			    	hour = 12;
-			    	hourAbbrev = "AM";
-			    } 
-			    else {
-			    	hourAbbrev = "AM";
-			    }
-
-			    if (minute < 10) {
-			    	minute = "0" + minute.toString();
-			    }
-
-			    dateAndTime.date = month + ' ' + day + ', ' + year;
-			    dateAndTime.time = hour + ":" + minute + " " + hourAbbrev;
-
-			    return dateAndTime;
-		    }
-
-		    $scope.date = $scope.getDate().date;
-		    $scope.time = $scope.getDate().time;
+    dashboardData.date = dashboardData.getDate().date;
+    dashboardData.time = dashboardData.getDate().time;
 
 
-		    // Get location and call weather api
-		    // function getWeather() {
-		    	$scope.getWeather = function() {
+    // get location and call weather api
+    dashboardData.getWeather = function() {
+	   	navigator.geolocation.getCurrentPosition(function(position){
+	        	dashboardData.position = position;
+	   			$rootScope.$broadcast('location-found');
+	    });
 
-		    	// var resp = {};
+		$scope.$on('location-found', function(resp) {
+			var latitude = dashboardData.position.coords.latitude;
+		    var longitude = dashboardData.position.coords.longitude;
 
-			   	navigator.geolocation.getCurrentPosition(function(position){
-			        	$scope.position = position;
-			   			$rootScope.$broadcast('location-found');
-			    });
-
-				$scope.$on('location-found', function(resp) {
-					var latitude = $scope.position.coords.latitude;
-				    var longitude = $scope.position.coords.longitude;
-				    console.log(latitude);
-				    console.log(longitude);
-
-					$http.get('http://api.wunderground.com/api/26f1bcbadc87fe35/conditions/forecast/alert/q/'+latitude+','+longitude+'.json')
-				        .success(function(response) {
-				          // $scope.resp = response;
-				          $scope.temp = Math.round(response.current_observation.temp_f);
-				          $scope.location = response.current_observation.display_location.city;
-				          // return resp;
-				        });
-				    // return resp;
-				    console.log($scope);
-				});
-			}
-
-			$scope.getWeather();
-
+			$http.get('http://api.wunderground.com/api/26f1bcbadc87fe35/conditions/forecast/alert/q/'+latitude+','+longitude+'.json')
+		        .success(function(response) {
+		          dashboardData.temp = Math.round(response.current_observation.temp_f);
+		          dashboardData.location = response.current_observation.display_location.city;
+		        });
 		});
-
-})(window.angular);
-
+	}
+	dashboardData.getWeather();
+});

@@ -1,0 +1,10 @@
+<section ng-controller="dashboardDataCtrl as d" class="dashboard-data-container">
+	<div class="time-date-container">
+	    <h1>{{d.date}}</h1>
+	    <p class="time">{{d.time}}</p>
+	</div>
+    <div ng-if="d.temp !== undefined" class="weather-location-container">
+        <h1>{{d.temp}}&deg;F</h1>
+        <p>near {{d.location}}</p>
+    </div>
+</section>

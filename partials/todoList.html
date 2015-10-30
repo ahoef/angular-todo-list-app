@@ -1,0 +1,31 @@
+<section ng-controller="todoListCtrl as t" class="todo-list-container">
+    <form role="form" ng-submit="t.addTodo(todo)">
+        <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" required/>
+        <div class="form-controls">
+          	<div class="select-overlay">Priority</div>
+          	<select ng-model="todo.priority" title="Priority">
+            	<option value="1">1</option>
+            	<option value="2">2</option>
+            	<option value="3">3</option>
+          	</select>
+          	<span>
+            	<input class="form-submit" type="submit" value="Add"/>
+          	</span>
+        </div>
+    </form>
+
+    <div ui-sortable ng-model="t.todos" class="todo-list">
+        <div class="list-item" ng-repeat="todo in t.todos track by $index" >
+            <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
+            <div class="controls" >
+              	<span ng-if="todo.priority">#{{todo.priority}}</span>
+              	<span ng-click="t.completeTodo(todo)" ng-model="todo.completed"><i class="icon-check"></i></span>
+              	<span ng-click="t.removeTodo($index)"><i class="icon-cross"></i></span>
+            </div>
+        </div>
+
+        <div class="instructions" ng-show="t.todos.length > 1 && t.isDesktop" >Drag items to change their order or <a ng-click="t.sortTodos()">sort by priority</a>!</div>
+
+        <div class="instructions" ng-show="t.todos.length > 1 && !t.isDesktop"><a ng-click="t.sortTodos()">Sort items by priority</a>!</div>
+    </div>
+</section>
