@@ -2,6 +2,7 @@
 
 var app = angular.module('dashboardApp', ['ui.sortable', 'LocalStorageModule'])
 
+// controller for todo list
 app.controller('todoListCtrl', function($scope, $filter, localStorageService) {
 	var todoList = this,
 		todosInStore = localStorageService.get('myTodos');
@@ -9,6 +10,8 @@ app.controller('todoListCtrl', function($scope, $filter, localStorageService) {
 	todoList.isDesktop = $(window).width() > 1024;
 	todoList.todos = todosInStore || [];
 
+	// pass in the view model's controller alias as the first param and 
+	// update localstorage when there are updates to the todos array
 	$scope.$watch('t.todos', function () {
 		localStorageService.set('myTodos', todoList.todos);
 
