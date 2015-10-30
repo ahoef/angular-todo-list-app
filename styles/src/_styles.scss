@@ -50,6 +50,7 @@ body {
 			color: $white;
 			padding: 13px 40px 10px 15px;
 			font-size: 16px;
+			width: 51px;
 		  	&:after {
 		  		@include triangle;
 		  		top: 20px;

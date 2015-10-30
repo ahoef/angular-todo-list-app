@@ -85,12 +85,11 @@ app.controller('dashboardDataCtrl', function($scope, $http, $rootScope) {
     dashboardData.date = dashboardData.getDate().date;
     dashboardData.time = dashboardData.getDate().time;
 
+
+    // get location and call weather api
 	dashboardData.geolocationEnabled = true;
 	dashboardData.weatherLoading = true;
-    // get location and call weather api
-
-    console.log(dashboardData.weatherLoading);
-
+    
     dashboardData.getPosition = function(position) {
 		dashboardData.position = position;
 		$rootScope.$broadcast('location-found');
@@ -130,11 +129,23 @@ app.controller('dashboardDataCtrl', function($scope, $http, $rootScope) {
 
 
 
+//directive for nicely styled priority dropdown menu
+app.directive('fakeDropdown', function() {
+  	return {
+      	restrict: 'AE',
+      	templateUrl: './app/views/fakeDropdown.html',
+      	link: function(scope, elem, attrs) {
 
-app.directive('helloWorld', function() {
-  return {
-      restrict: 'AE',
-      replace: 'true',
-      template: '<h3>Hello World!!</h3>'
-  };
+			var $selectOverlay = $('.select-overlay');
+
+		    $('select').on('change', function(){
+		        var $self=$(this);
+		        $selectOverlay.text($self.val());
+		    });
+
+		    $('.form-submit').on('click', function() {
+		    	$selectOverlay.text('Priority');
+		    });
+	    }
+  	};
 });

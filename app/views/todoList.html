@@ -1,18 +1,9 @@
 <section ng-controller="todoListCtrl as t" class="todo-list-container">
-  <hello-world></hello-world>
+  
     <form role="form" ng-submit="t.addTodo(todo)">
         <input class="input-field" type="text" ng-model="todo.item" placeholder="What's on your todo list?" required/>
-        <div class="form-controls">
-          	<div class="select-overlay">Priority</div>
-          	<select ng-model="todo.priority" title="Priority">
-            	<option value="1">1</option>
-            	<option value="2">2</option>
-            	<option value="3">3</option>
-          	</select>
-          	<span>
-            	<input class="form-submit" type="submit" value="Add"/>
-          	</span>
-        </div>
+
+        <fake-Dropdown></fake-Dropdown>
     </form>
 
     <div ui-sortable ng-model="t.todos" class="todo-list">
