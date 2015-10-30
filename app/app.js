@@ -85,13 +85,32 @@ app.controller('dashboardDataCtrl', function($scope, $http, $rootScope) {
     dashboardData.date = dashboardData.getDate().date;
     dashboardData.time = dashboardData.getDate().time;
 
-
+	dashboardData.geolocationEnabled = true;
+	dashboardData.weatherLoading = true;
     // get location and call weather api
+
+    console.log(dashboardData.weatherLoading);
+
+    dashboardData.getPosition = function(position) {
+		dashboardData.position = position;
+		$rootScope.$broadcast('location-found');
+    }
+
+    dashboardData.getError = function(error) {
+    	dashboardData.geolocationEnabled = false;
+    	dashboardData.weatherLoading = false;
+    	$scope.$apply();
+    }
+
     dashboardData.getWeather = function() {
-	   	navigator.geolocation.getCurrentPosition(function(position){
-	        	dashboardData.position = position;
-	   			$rootScope.$broadcast('location-found');
-	    });
+		if(navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(dashboardData.getPosition, dashboardData.getError);
+			
+		} else {
+			dashboardData.geolocationEnabled = false;
+			dashboardData.weatherLoading = false;
+			$scope.$apply();
+		}
 
 		$scope.$on('location-found', function(resp) {
 			var latitude = dashboardData.position.coords.latitude;
@@ -101,8 +120,21 @@ app.controller('dashboardDataCtrl', function($scope, $http, $rootScope) {
 		        .success(function(response) {
 		          dashboardData.temp = Math.round(response.current_observation.temp_f);
 		          dashboardData.location = response.current_observation.display_location.city;
+		          dashboardData.weatherLoading = false;
 		        });
 		});
 	}
 	dashboardData.getWeather();
+});
+
+
+
+
+
+app.directive('helloWorld', function() {
+  return {
+      restrict: 'AE',
+      replace: 'true',
+      template: '<h3>Hello World!!</h3>'
+  };
 });

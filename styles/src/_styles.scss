@@ -83,6 +83,20 @@ body {
 			font-style: italic;
 			font-weight: 300;
 		}
+		.loader{
+		  height: 55px;
+		  width: 30%;
+		  text-align: right;
+		  padding: 1em;
+		  margin: 0 auto 1em;
+		  display: inline-block;
+		  vertical-align: top;
+		}
+
+		svg path,
+		svg rect{
+		  fill: $white;
+		}
 	}
 
 	.todo-list {
