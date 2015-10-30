@@ -44,15 +44,23 @@
 				}
 			}
 		}
+		.dashboard-data-container {
+			margin-bottom: 20px;
+			p {
+				font-size: 14px;
+			}
+		}
 		.todo-list {
 			width: 100%;
 		}
 		h1 {
-			font-size: 1.5em;
-			margin: 30px 15px;
+			font-size: 18px;
+			margin: 12px 0px;
+
 		}
 
 		footer {
+			opacity: .8;
 			.expanded-footer {
 				width: 100%;
 			}
