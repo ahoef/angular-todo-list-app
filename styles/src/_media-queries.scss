@@ -12,12 +12,14 @@
 
 @media screen and (max-width: 640px) {
 	body {
+		margin: 0;
 		.container {
 			width: 90%;
 			margin-top: 0;
 			form {
 				.input-field {
 					margin-bottom: 10px;
+					width: 92%;
 				}
 				.form-controls {
 					position: relative;
@@ -44,13 +46,22 @@
 				}
 			}
 		}
+		.todo-list {
+			.list-item i {
+				margin-left: 6px;
+			}
+		}
+		.time-date-container {
+			width: 62%;
+		}
 		.dashboard-data-container {
 			margin-bottom: 20px;
 			p {
-				font-size: 14px;
+				font-size: 12px;
 			}
 			.loader{
-			  height: 26px;
+			  height: 18px;
+			  width: 22%;
 			}
 		}
 		.todo-list {
