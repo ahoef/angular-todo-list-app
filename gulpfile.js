@@ -25,15 +25,19 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js', function() {
-  gulp.src('libraries/src/angular/*.js')
+  gulp.src(['app/*.js', 'app/*/*.js'])
+    .pipe(concat("app.js"))
+    .pipe(gulp.dest('build'));
+
+  gulp.src('libraries/angular/*.js')
     .pipe(uglify())
     .pipe(concat("angular.min.js"))
-    .pipe(gulp.dest('libraries/dest'));
+    .pipe(gulp.dest('build'));
 
-  gulp.src('libraries/src/jquery/*.js')
+  gulp.src('libraries/jquery/*.js')
     .pipe(uglify())
     .pipe(concat("jquery.min.js"))
-    .pipe(gulp.dest('libraries/dest'))
+    .pipe(gulp.dest('build'))
     .pipe(notify({ 
       message: "JS compiled!"
     }));
