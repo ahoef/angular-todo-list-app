@@ -10,9 +10,9 @@
         <div class="list-item" ng-repeat="todo in t.todos track by $index" >
             <input class="input-field" type="text" ng-model="todo.item" ng-class="{completed: todo.completed}"/>
             <div class="controls" >
-              	<span ng-if="todo.priority">#{{todo.priority}}</span>
-              	<span ng-click="t.completeTodo(todo)" ng-model="todo.completed"><i class="icon-check"></i></span>
-              	<span ng-click="t.removeTodo($index)"><i class="icon-cross"></i></span>
+                <span ng-if="todo.priority">#{{todo.priority}}</span>
+                <span ng-click="t.completeTodo(todo)" ng-model="todo.completed"><i class="icon-check"></i></span>
+                <span ng-click="t.removeTodo($index)"><i class="icon-cross"></i></span>
             </div>
         </div>
 
